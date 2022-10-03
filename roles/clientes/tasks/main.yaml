@@ -1,0 +1,9 @@
+- name: Copiar configuración de red
+  ansible.builtin.copy:
+    src: interfaces
+    dest: /etc/network/interfaces
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Cargar nueva configuracion de red

@@ -1,0 +1,19 @@
+- hosts: all
+  become: true
+  roles:
+   - commons
+
+- hosts: router
+  become: true
+  roles:
+   - router
+
+- hosts: clientes
+  become: true
+  roles:
+   - clientes
+
+- hosts: cliente1
+  become: true
+  roles:
+   - web

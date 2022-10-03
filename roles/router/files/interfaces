@@ -1,0 +1,26 @@
+source-directory /etc/network/interfaces.d
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet dhcp
+    post-up ip route del default dev eth0 || true
+    post-up dhclient $IFACE || true
+
+auto eth2
+iface eth2 inet static
+    address 10.0.0.1
+    netmask 255.255.255.0
+    dns-nameservers 8.8.8.8
+    post-up ip route del default dev $IFACE || true
+    post-up ip r add 10.0.0.0/24 via 10.0.0.2 dev eth2 || true
+
+up iptables -t nat -A POSTROUTING -o eth1 -s 10.0.0.0/24 -j MASQUERADE
+
+#    pre-down ip route add default dev eth0 || true

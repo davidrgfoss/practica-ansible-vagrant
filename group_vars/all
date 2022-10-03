@@ -1,0 +1,15 @@
+Networks:
+   cliente1:
+      Interfaz: 'eth1'
+      IP: '10.0.0.2'
+      subred: '255.255.255.0'
+      Gateway: '10.0.0.1'
+      Origen: '10.0.0.0/24'
+      dns: '8.8.8.8'
+   cliente2:
+      Interfaz: 'eth1'
+      IP: '10.0.0.3'
+      subred: '255.255.255.0'
+      Gateway: '10.0.0.1'
+      Origen: '10.0.0.0/24'
+      dns: '8.8.8.8'

@@ -1,0 +1,23 @@
+source-directory /etc/network/interfaces.d
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug eth0
+iface eth0 inet dhcp
+
+{% for f in Networks %}
+{% if f is ansible_hostname %}
+auto {{Networks[f].Interfaz}}
+iface {{Networks[f].Interfaz}} inet static
+	address {{Networks[f].IP}}
+	netmask {{Networks[f].subred}}
+	gateway {{Networks[f].Gateway}}
+	dns-nameservers {{Networks[f].dns}}
+	post-up ip route del default || true
+	post-up ip route add default via {{Networks[f].Gateway}} dev $IFACE || true
+{% endif %}
+{% endfor %}
+

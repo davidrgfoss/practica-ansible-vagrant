@@ -1,0 +1,13 @@
+- name: Actualizamos Paquetes
+  apt: update_cache=yes upgrade=yes
+
+- name: Instalar Paquetes
+  apt:
+    pkg: 
+      - resolvconf
+
+- name: Copiar clave ssh personal a las maquinas.
+  authorized_key:
+    user: vagrant
+    state: present
+    key: "{{ lookup('file', '/home/davidrg/.ssh/id_rsa.pub') }}"
