@@ -1,2 +1,7 @@
-- name: reiniciar maquina
+- name: Cargar nueva configuracion de red1
+  service:
+    name: networking
+    state: restarted
+
+- name: Cargar nueva configuracion de red
   reboot:

@@ -1,6 +1,6 @@
-- name: Copiar configuración de red
-  ansible.builtin.copy:
-    src: interfaces
+- name: Configurar red
+  ansible.builtin.template:
+    src: interfaces.j2
     dest: /etc/network/interfaces
     owner: root
     group: root

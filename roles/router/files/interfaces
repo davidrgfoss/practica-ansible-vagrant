@@ -17,10 +17,10 @@ auto eth2
 iface eth2 inet static
     address 10.0.0.1
     netmask 255.255.255.0
-    dns-nameservers 8.8.8.8
-    post-up ip route del default dev $IFACE || true
-    post-up ip r add 10.0.0.0/24 via 10.0.0.2 dev eth2 || true
+    dns-nameservers 192.168.202.2
+    post-up ip r add 10.0.0.0/24 via 10.0.0.2 dev $IFACE || true
 
 up iptables -t nat -A POSTROUTING -o eth1 -s 10.0.0.0/24 -j MASQUERADE
 
 #    pre-down ip route add default dev eth0 || true
+

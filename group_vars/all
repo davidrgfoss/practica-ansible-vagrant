@@ -5,7 +5,7 @@ Networks:
       subred: '255.255.255.0'
       Gateway: '10.0.0.1'
       Origen: '10.0.0.0/24'
-      dns: '8.8.8.8'
+      dns: '192.168.202.2'
    cliente2:
       Interfaz: 'eth1'
       IP: '10.0.0.3'
@@ -13,3 +13,8 @@ Networks:
       Gateway: '10.0.0.1'
       Origen: '10.0.0.0/24'
       dns: '8.8.8.8'
+      
+      
+bd_name: wordpress_bd
+bd_user: wordpress_user
+bd_pass: asdasd

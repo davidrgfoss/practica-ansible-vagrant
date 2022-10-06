@@ -3,8 +3,7 @@
 
 - name: Instalar Paquetes
   apt:
-    pkg: 
-      - resolvconf
+    name: resolvconf
 
 - name: Copiar clave ssh personal a las maquinas.
   authorized_key:
