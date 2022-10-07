@@ -21,6 +21,13 @@ iface eth2 inet static
     post-up ip r add 10.0.0.0/24 via 10.0.0.2 dev $IFACE || true
 
 up iptables -t nat -A POSTROUTING -o eth1 -s 10.0.0.0/24 -j MASQUERADE
+down iptables -t nat -d POSTROUTING -o eth1 -s 10.0.0.0/24 -j MASQUERADE
+
+up iptables -t nat -A PREROUTING -p tcp --dport 80 -i {{ interfaz_nat }} -j DNAT --to  {{ ip_webserver }}
+down iptables -t nat -D PREROUTING -p tcp --dport 80 -i {{ interfaz_nat }} -j DNAT --to  {{ ip_webserver }}
+
+
+
 
 #    pre-down ip route add default dev eth0 || true
 
