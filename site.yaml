@@ -3,15 +3,15 @@
   roles:
    - commons
 
-- hosts: clientes
-  become: true
-  roles:
-   - clientes
-
 - hosts: router
   become: true
   roles:
    - router
+
+- hosts: clientes
+  become: true
+  roles:
+   - clientes
 
 - hosts: cliente1
   become: true
